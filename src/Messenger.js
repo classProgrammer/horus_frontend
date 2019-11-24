@@ -12,19 +12,7 @@ class Messenger extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            messages: [
-                {
-                    sender: "YOU",
-                    message: "Hi",
-                    timestamp: "12:30"
-                },
-                {
-                    sender: "BOT",
-                    message: "Hall ich bin der 3BIT Chatbot, wie kann ich helfen",
-                    timestamp: "12:30"
-                },
-
-            ],
+            messages: [],
             message: ""
         }
     }

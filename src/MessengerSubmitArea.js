@@ -29,28 +29,26 @@ const styles = () => ({
 
 
 class MessengerSubmitArea extends React.Component  {
-    constructor(props) {
-        super(props)
-    }
 
     render() {
         const { classes } = this.props
         return (
-            <Paper width="100%" component="form" className={classes.root}>
+            
+            <Paper onSubmit={this.props.submitMessage} width="100%" component="form" className={classes.root}>
                 <InputBase
                     ref="messagearea_message"
                     onChange={this.props.textHandler}
                     className={classes.input}
                     placeholder="Deine Nachricht"
-                    inputProps={{ 'aria-label': 'search google maps' }}
+                    value={this.props.message}
                 />
                 <Divider className={classes.divider} orientation="vertical" />
     
                 <IconButton onClick={this.props.submitMessage} className={classes.iconButton} aria-label="Versenden">
                     <SearchIcon />
                 </IconButton>
-    
             </Paper>
+            
         )
     }
 }

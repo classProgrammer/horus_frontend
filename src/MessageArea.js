@@ -1,11 +1,11 @@
 import React from 'react'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
-import Divider from '@material-ui/core/Divider'
+import PropTypes from 'prop-types'
+import { withStyles } from '@material-ui/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
+import MessageCard from './MessageCard.js'
 
-const useStyles = makeStyles({
+const styles = () => ({
     card: {
         minHeight: "30em",
         maxHeight: "30em",
@@ -15,36 +15,52 @@ const useStyles = makeStyles({
     },
     titleBot: {
         fontSize: 14,
-        color:"green"
+        color: "green"
     },
     titleUser: {
         fontSize: 14,
-        color:"blue"
+        color: "blue"
     },
 })
 
-function MessageArea(props) {
-    const classes = useStyles()
+class MessageArea extends React.Component {
 
-    return (
-        <Card className={classes.card}>
-            <CardContent>
-                {props.entries.map((msg, idx) => {
-                    return <div key={"div_" + idx}>
-                        {(msg.sender === "BOT") ?(
-                        <Typography align="left" className={classes.titleBot} color="textPrimary" gutterBottom>
-                            {msg.message}
-                        </Typography>) : (
-                            <Typography align="center" className={classes.titleUser} color="textPrimary" gutterBottom>
-                            {msg.message}
-                            </Typography>   
-                        )}
-                        <Divider />
+    scrollToBottom = () => {
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    }
+
+    componentDidMount() {
+        this.scrollToBottom();
+    }
+
+    componentDidUpdate() {
+        this.scrollToBottom();
+    }
+
+    render() {
+        const { classes } = this.props
+
+        return (
+            <Card className={classes.card}>
+                <CardContent>
+                    {this.props.entries.map((entry, idx) => {
+                        return <MessageCard key={"div_" + idx}
+                            message={entry.message}
+                            sender={entry.sender}
+                            timestamp={entry.timestamp}
+                        />
+                    })}
+                    <div style={{ float: "left", clear: "both" }}
+                        ref={(el) => { this.messagesEnd = el; }}>
                     </div>
-                })}
-            </CardContent>
-        </Card>
-    )
+                </CardContent>
+            </Card>
+        )
+    }
 }
 
-export default MessageArea
+MessageArea.propTypes = {
+    classes: PropTypes.object.isRequired,
+}
+
+export default withStyles(styles)(MessageArea)

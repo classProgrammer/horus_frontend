@@ -11,30 +11,23 @@ const styles = () => ({
         maxHeight: "30em",
         height: "100%",
         width: "100%",
-        overflow: "auto"
-    },
-    titleBot: {
-        fontSize: 14,
-        color: "green"
-    },
-    titleUser: {
-        fontSize: 14,
-        color: "blue"
+        overflow: "auto",
+        background: "#fcfcfc"
     },
 })
 
 class MessageArea extends React.Component {
 
     scrollToBottom = () => {
-        this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+        this.messagesEnd.scrollIntoView({ behavior: "smooth" })
     }
 
     componentDidMount() {
-        this.scrollToBottom();
+        this.scrollToBottom()
     }
 
     componentDidUpdate() {
-        this.scrollToBottom();
+        this.scrollToBottom()
     }
 
     render() {
@@ -51,7 +44,7 @@ class MessageArea extends React.Component {
                         />
                     })}
                     <div style={{ float: "left", clear: "both" }}
-                        ref={(el) => { this.messagesEnd = el; }}>
+                        ref={(el) => { this.messagesEnd = el }}>
                     </div>
                 </CardContent>
             </Card>

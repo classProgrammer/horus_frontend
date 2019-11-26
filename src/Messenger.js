@@ -52,13 +52,16 @@ class Messenger extends React.Component {
             headers: { 'Content-Type': 'application/json' }
         })
             .then((response) => {
+                
                 var messages = this.state.messages
-                const message = {
-                    sender: "BOT",
-                    message: response.data[0].text,
-                    timestamp: this.getTimestamp()
-                }
-                messages.push(message)
+                response.data.forEach(element => {
+                    const message = {
+                        sender: "BOT",
+                        message: element.text,
+                        timestamp: this.getTimestamp()
+                    }
+                    messages.push(message)
+                });
                 this.setState(messages)
             })
     }

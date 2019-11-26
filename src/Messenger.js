@@ -47,7 +47,7 @@ class Messenger extends React.Component {
 
         axios({
             method: 'post',
-            url: 'http://localhost:5005/webhooks/rest/webhook',
+            url: 'http://localhost/webhooks/rest/webhook',
             data: message,
             headers: { 'Content-Type': 'application/json' }
         })

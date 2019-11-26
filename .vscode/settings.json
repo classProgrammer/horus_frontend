@@ -1,0 +1,8 @@
+{
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/5719835c-f772-4c42-ad66-02fed36b2526/resourceGroups/BIT/providers/Microsoft.Web/sites/3bitchatbot",
+    "appService.deploySubpath": "build"
+}

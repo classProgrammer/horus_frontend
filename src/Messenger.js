@@ -47,7 +47,7 @@ class Messenger extends React.Component {
 
         axios({
             method: 'post',
-            url: 'http://localhost/webhooks/rest/webhook',
+            url: 'https://3bitrasa.azurewebsites.net/webhooks/rest/webhook',
             data: message,
             headers: { 'Content-Type': 'application/json' }
         })
@@ -74,7 +74,7 @@ class Messenger extends React.Component {
                 alignItems="center"
             >
                 <Grid item >
-                    <Box width={"25em"} marginTop={"3em"}>
+                    <Box width={"25em"}>
                         <MessengerToolbar title="3BIT Dev Chatbot" />
                         <MessageArea entries={this.state.messages} />
                         <Divider light />

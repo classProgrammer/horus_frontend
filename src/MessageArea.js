@@ -7,8 +7,8 @@ import MessageCard from './MessageCard.js'
 
 const styles = () => ({
     card: {
-        minHeight: "30em",
-        maxHeight: "30em",
+        minHeight: "28em",
+        maxHeight: "28em",
         height: "100%",
         width: "100%",
         overflow: "auto",

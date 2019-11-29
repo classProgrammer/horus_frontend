@@ -1,6 +1,7 @@
 # horus_frontend
 
-Simple React Frontend to display a chat with e.g. a chatbot
+Simple React Frontend to display a chat with e.g. a chatbot.
+- [Live Demo Azure](https://3bitchatbot.azurewebsites.net)
 
 ## Components
 - Messenger: Main component handling the logic of the submit button, holds other components

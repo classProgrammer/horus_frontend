@@ -6,14 +6,20 @@ import Grid from '@material-ui/core/Grid'
 import MessengerToolbar from './MessengerToolbar.js'
 import MessageArea from './MessageArea.js'
 import MessengerSubmitArea from './MessengerSubmitArea.js'
+import uuid from 'react-uuid'
 
 class Messenger extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             messages: [],
-            message: ""
+            message: "",
+            UUID: null
         }
+    }
+
+    componentDidMount() {
+        this.setState({UUID: uuid()})
     }
 
     handleMessage(event) {
@@ -40,15 +46,20 @@ class Messenger extends React.Component {
             timestamp: this.getTimestamp()
         }
         messages.push(message)
+        const data = {
+            sender: this.state.UUID,
+            message: this.state.message
+        }
         this.setState({
             messages: messages,
             message: ""
         })
 
+
         axios({
             method: 'post',
-            url: 'https://3bitrasa.azurewebsites.net/webhooks/rest/webhook',
-            data: message,
+            url: 'https://3bitrasa.azurewebsites.net//webhooks/rest/webhook',
+            data: data,
             headers: { 'Content-Type': 'application/json' }
         })
             .then((response) => {
@@ -62,6 +73,16 @@ class Messenger extends React.Component {
                     }
                     messages.push(message)
                 });
+                this.setState(messages)
+            }).catch(exception => {
+                var messages = this.state.messages
+                
+                messages.push({
+                    sender: "SYSTEM",
+                    message: "Rasa Server nicht erreichbar",
+                    timestamp: this.getTimestamp()
+                })
+
                 this.setState(messages)
             })
     }

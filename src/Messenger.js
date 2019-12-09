@@ -96,7 +96,7 @@ class Messenger extends React.Component {
             >
                 <Grid item >
                     <Box width={"25em"}>
-                        <MessengerToolbar title="3BIT Dev Chatbot" />
+                        <MessengerToolbar title="3 Banken IT Dev Chatbot" />
                         <MessageArea entries={this.state.messages} />
                         <Divider light />
                         <MessengerSubmitArea 

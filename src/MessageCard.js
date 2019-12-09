@@ -6,12 +6,12 @@ import CardContent from '@material-ui/core/CardContent'
 
 const messageCardStyles = makeStyles({
     cardbot: {
-        maxWidth: "65%",
+        maxWidth: "70%",
         background: "#e0f7a8",
         marginBottom: "0.7em"
     },
     carduser: {
-        maxWidth: "65%",
+        maxWidth: "70%",
         background: "#c2d7ff",
         marginBottom: "0.7em"
     },
